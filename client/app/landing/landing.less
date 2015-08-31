@@ -1,0 +1,36 @@
+.landing-bkg{
+	background: url('https://static.pexels.com/photos/8729/mountain-bw-morgins.jpeg') no-repeat center center fixed; 
+	background-position: center center;
+	-moz-background-size: cover;
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 100vh;
+	width: 100vw;
+	
+	 .container{
+      width: 500px;
+    }
+    .vertical-center {
+      height: 97vh;
+      width: 97vw;
+      text-align: center;  /* align the inline(-block) elements horizontally */
+      font: 0/0 a;         /* remove the gap between inline(-block) elements */
+			background-color: transparent;
+    }
+    .vertical-center:before {    /* create a full-height inline block pseudo=element */
+      content: ' ';
+      display: inline-block;
+      vertical-align: middle;  /* vertical alignment of the inline element */
+      height: 100%;
+    }
+    .vertical-center > .container {
+      max-width: 100%;
+      display: inline-block;
+      vertical-align: middle;  /* vertical alignment of the inline element */
+      font: 16px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;        /* <-- reset the font property */
+    }
+	.h1 {
+		color: aliceblue !important;	
+	}
+
+}

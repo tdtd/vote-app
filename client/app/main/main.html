@@ -1,0 +1,31 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+ 
+<div class="container">
+	<div class="col-md-3"></div>
+	<div class="col-md-6">
+		<div ng-show="newForm">
+			<form class="comment-form" ng-submit="addPoll()" name="pollForm">
+				<input type="text" class="form-control" ng-model="newPoll.title" rows="3" placeholder="Title" required></textarea>
+
+				<span ng-repeat="opt in newPoll.options track by $index" class="option-form">
+					<input type="text" class="form-control" ng-init="newPoll.options[$index].votes = 0" ng-model="newPoll.options[$index].title" rows="3" placeholder="Option {{$index + 1}}" required />
+					</textarea><a ng-click="removeOption($index)"><i class="fa fa-times cross"></i></a>
+				</span>
+
+				<input class="btn btn-primary"  ng-disabled="pollForm.$invalid" type="submit" value="Post">
+				<button class="btn btn-primary pull-left" ng-click="addOption(); newPoll.options[0].votes = 0">New Option</button>
+			</form>
+		</div>
+
+		<ul class="comment-list">
+			<li ng-repeat="poll in polls" ng-click="goto('/poll/'+poll._id)">
+				<header>{{ poll.title }}</header> 
+				<header><small> {{ poll.author.name }} </small></header>
+				<header class="pull-right date"><small> {{ poll.date | date}} </small></header>
+			</li>
+		</ul>
+
+		<button class="btn btn-lg" ng-init="newPoll" ng-click="newForm = !newForm">New Poll</button>
+	</div>
+	<div class="col-md-3"></div>
+</div>

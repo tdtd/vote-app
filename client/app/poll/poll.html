@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="bower_components/angular-chart.js/dist/angular-chart.css">
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="row" ng-show="votable">
+	<div class="container">
+		<div class="col-md-3"></div>
+		<div class="col-md-6">
+			<h1>{{ polls.title }}</h1>
+			<header><small>{{ polls.date | date }}</small></header>
+			<header><small>{{ polls.author.name }}</small></header>
+			<br>
+			<p>You have chosen: {{ polls.content[title].title }}</p>
+			<form class="poll-form" ng-submit="vote(title)" name="pollForm">
+				<br/>
+				<span ng-repeat="option in polls.content track by $index">					
+					<input type="radio"
+								 ng-model="$parent.title"
+								 value="{{$index}}"
+								 name="title" 
+								 class="option-form" />{{ option.title }}<br/>
+				</span>
+				<br/>	
+				<input class="btn btn-primary"  ng-disabled="pollForm.$invalid" type="submit" value="Vote">
+			</form>
+
+		</div>
+	<div class="col-md-3"></div>
+		
+	</div>
+</div>
+
+<div class="row" ng-show="!votable">
+	<div class="container">
+		<div class="col-md-12">
+			<h1>{{ polls.title }}</h1>
+			<header><small>{{ polls.date | date }}</small></header>
+			<header><small>{{ polls.author.name }}</small></header>
+			<br>		
+			<canvas id="bar" class="chart chart-bar"
+							chart-data="data" chart-labels="labels">
+			</canvas>
+
+		</div>
+	</div>
+</div>
